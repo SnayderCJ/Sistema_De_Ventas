@@ -27,6 +27,9 @@ class RegularClient(Client):
     def __str__(self):
         return f"Cliente Regular\nNombre: {self.first_name} {self.last_name}\nDNI: {self.dni}\nDescuento: {self.discount}\n"
     
+    def show(self):
+        print(f"Cliente Regular: {self.first_name} {self.last_name}, DNI: {self.dni}") # Para mostrar el Cliente
+    
     def getJson(self):
         return {"Nombre":self.first_name, "Apellido":self.last_name, "DNI":self.dni, "Valor":self.discount}
     
@@ -46,6 +49,9 @@ class VipClient(Client):
     def __str__(self):
         return f"Cliente VIP\nNombre: {self.first_name} {self.last_name}\nDNI: {self.dni}\nLimite de credito: {self.limit}\n"
     
+    def show(self):
+        print(f"Cliente Regular: {self.first_name} {self.last_name}, DNI: {self.dni}") # Para mostrar el Cliente
+
     def getJson(self):
         return {"Nombre":self.first_name, "Apellido":self.last_name, "DNI":self.dni, "Valor":self.limit}
 

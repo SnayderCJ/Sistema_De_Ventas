@@ -16,6 +16,7 @@ path, file = os.path.split(__file__)
 
 class CrudSales(Icrud):
   def create(self):
+    
     company = Company()
     company.show()
 

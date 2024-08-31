@@ -57,6 +57,7 @@ class Sale(ICalculos):
     
 
     def print_invoice(self,company):
+
         BorrarPantalla()
         print('\033c', end='')
         print(green_color + "*"*70 + reset_color)
@@ -78,11 +79,19 @@ class Sale(ICalculos):
 
 if __name__ == '__main__':
     company = Company()
-    cli1 = RegularClient("Daniel", "Vera", "0914122419", card=True)
-    cli2 = VipClient("Erick", "Bohorquez", "0714122412")
-    product1 = Product("Aceite", 2, 1000)
-    product2 = Product("Colas", 3, 5000)
-    sale1 = Sale(cli1)
-    sale1.add_detail(product1, 5)
-    sale1.add_detail(product2, 10)
-    sale1.print_invoice(company)
+    # cli1 = RegularClient("Daniel", "Vera", "0914122419", card=True)
+    # cli2 = VipClient("Erick", "Bohorquez", "0714122412")
+    # product1 = Product("Aceite", 2, 1000)
+    # product2 = Product("Colas", 3, 5000)
+    # sale1 = Sale(cli1)
+    # sale1.add_detail(product1, 5)
+    # sale1.add_detail(product2, 10)
+    # sale1.print_invoice(company)
+
+    cli3 = RegularClient('Snayder', 'Cedeno', '0944104942', card=True)
+    product3 = Product('Arroz', 2, 1000)
+    product4 = Product('Azucar', 3, 5000)
+    sale2 = Sale(cli3)
+    sale2.add_detail(product3, 5)
+    sale2.add_detail(product4, 10)
+    sale2.print_invoice(company)
