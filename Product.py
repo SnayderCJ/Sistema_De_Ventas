@@ -1,5 +1,5 @@
 class Product:
-    def __init__(self, id,descrip = "Ninguno",preci = 0,stock = 0 ):
+    def __init__(self, id, descrip = "Ninguno",preci = 0,stock = 0 ):
         self.id = id
         self.descrip = descrip
         self.preci = preci
@@ -24,4 +24,5 @@ class Product:
         return {"ID":self.id, "Description":self.descrip, "Precio":self.preci, "Stock":self.__stock}
 
 if __name__ == "__main__":
-    Producto1 = Product(1,"Laptop", 1000, 10)
+    producto1 = Product(1,"Laptop", 1000, 10)
+    print(producto1)

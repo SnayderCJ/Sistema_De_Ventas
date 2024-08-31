@@ -21,4 +21,7 @@ class JsonFile:
                 data = [item for item in datas if item[atributo] == buscado ]
         except FileNotFoundError:
             data = []
+        except KeyError:
+            print(f"Error: El atributo '{atributo}' no se encuentra en algunos elementos del archivo.")
+            data = []
         return data

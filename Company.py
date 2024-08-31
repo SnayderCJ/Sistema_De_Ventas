@@ -9,7 +9,7 @@ class Company:
         self.ruc = ruc
     
     def __str__(self):
-        return f"id:{self._id}\nCompañia:{self.name}\nRuc:{self.ruc}\n"
+        return f"id:{self._id}\n Compañia:{self.name}\n Ruc:{self.ruc}\n"
     
     def show(self):
         print(f"{blue_color}Compañia: {purple_color}{self.name}{reset_color}\n{blue_color}Ruc: {purple_color}{self.ruc}{reset_color}")
