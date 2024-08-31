@@ -21,8 +21,24 @@ class CrudProducts(Icrud):
             next_id = 1 
 
         descrip = input("Ingrese la descripción del producto: ")
-        preci = float(input("Ingrese el precio del producto: "))
-        stock = int(input("Ingrese la cantidad en stock: "))
+
+        while True:
+            try:
+                preci = float(input("Ingrese el precio del producto: "))
+                if preci <= 0:
+                    raise ValueError("El precio debe ser positivo.")
+                break
+            except ValueError as e:
+                print(f"Error: {e}")
+
+        while True:
+            try:
+                stock = int(input("Ingrese la cantidad en stock: "))
+                if stock < 0:
+                    raise ValueError("El stock no puede ser negativo.")
+                break
+            except ValueError as e:
+                print(f"Error: {e}")
 
         producto_existente = any(p['Descripción'] == descrip for p in productos)
 
@@ -33,10 +49,10 @@ class CrudProducts(Icrud):
             productos.append(producto.getjson())
             self.json_file.save(productos)
             print("Producto registrado exitosamente!")
-        
         time.sleep(3)
 
     def update(self):
+
         product_id = int(input("Ingrese el ID del producto a actualizar: "))
         productos = self.json_file.read()
 
@@ -54,9 +70,9 @@ class CrudProducts(Icrud):
                 self.json_file.save(productos)
                 print("Producto actualizado exitosamente!")
                 break
-        else:
-            print("Producto no encontrado.")
-        time.sleep(3)
+            else:
+                print("Producto no encontrado.")
+            time.sleep(3)
         
     def delete(self):
         product_id = int(input("Ingrese el ID del producto a eliminar: "))
@@ -74,9 +90,9 @@ class CrudProducts(Icrud):
                 else:
                     print("Eliminación cancelada.")
                 break
-        else:
-            print("Producto no encontrado.")
-        time.sleep(3)
+            else:
+                print("Producto no encontrado.")
+            time.sleep(3)
 
     def consult(self):
         while True:

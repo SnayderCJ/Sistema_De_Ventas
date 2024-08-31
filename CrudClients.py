@@ -8,10 +8,14 @@ import os
 
 path, file = os.path.split(__file__)
 
+
 class CrudClients(Icrud):
     json_file = JsonFile(f"{path}/data/clients.json")
     Company = Company()
+    
+
     def create(self):
+
         while True:
             BorrarPantalla()
             menu = Menu(titulo="=== Registro de Cliente ===", opciones=["Cliente Regular", "Cliente VIP", "Volver al menú principal"])
@@ -48,7 +52,10 @@ class CrudClients(Icrud):
                 self.json_file.save(clientes)
                 print("Cliente registrado exitosamente!")
             time.sleep(3)
+
+
     def update(self):
+
         dni = input("Ingrese el DNI del cliente a actualizar: ")
         clientes = self.json_file.read()
 
@@ -57,6 +64,7 @@ class CrudClients(Icrud):
                 print(f"Cliente encontrado: {cliente['Nombre']} {cliente['Apellido']}")
                 nuevo_nombre = input("Nuevo nombre (presione Enter para dejar sin cambios): ").strip()
                 nuevo_apellido = input("Nuevo apellido (presione Enter para dejar sin cambios): ").strip()
+
                 if nuevo_nombre:
                     cliente['Nombre'] = nuevo_nombre
                 if nuevo_apellido:
@@ -64,13 +72,16 @@ class CrudClients(Icrud):
                 self.json_file.save(clientes)
                 print("Cliente actualizado exitosamente!")
                 break
-        else:
-            print("Cliente no encontrado.")
-            
-        time.sleep(3)
+            else:
+                print("Cliente no encontrado.") 
+            time.sleep(3)
+
+
     def delete(self):
+
         dni = input("Ingrese el DNI del cliente a eliminar: ")
         clientes = self.json_file.read()
+
         for cliente in clientes:
             if cliente['DNI'] == dni:
                 print(f"Cliente encontrado: {cliente['Nombre']} {cliente['Apellido']}")
@@ -83,10 +94,13 @@ class CrudClients(Icrud):
                 else:
                     print("Eliminación cancelada.")
                 break
-        else:
-            print("Cliente no encontrado.")
-        time.sleep(3)
+            else:
+                print("Cliente no encontrado.")
+            time.sleep(3)
+
+
     def consult(self):
+
         while True:
             BorrarPantalla()
             menu = Menu(titulo="=== Consulta de Clientes ===", opciones=["Buscar por DNI", "Buscar por Nombre", "Buscar por Apellido", "Ver todos los clientes", "Volver al menú principal"])
